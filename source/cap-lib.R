@@ -9,4 +9,6 @@ library(zoo)
 library(xts)
 
 # load all necessary fils
-source("source/cap-data-weather.R")
+source("source/data/cap-data.R")
+source("source/data/cap-data-prepare.R")
+source("source/data/cap-data-predictors.R")
