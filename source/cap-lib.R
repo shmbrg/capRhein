@@ -2,13 +2,15 @@
 # install libraries automatically, if not installed yet
 
 # load libraries
-library(data.table)
-library(GLDEX)
-library(lubridate)
-library(zoo)
-library(xts)
+library(data.table)           # basic data structure
+#library(GLDEX)
+library(lubridate)            # for hour, minute
+library(zoo)                  # for na.locf
+#library(xts)
+library(caret)                # for findCorrelation
+#library(corrplot)            # cor plot; not needed in system
 
 # load all necessary fils
 source("source/data/cap-data.R")
-source("source/data/cap-data-prepare.R")
+source("source/data/cap-data-clean.R")
 source("source/data/cap-data-predictors.R")

@@ -14,7 +14,7 @@ capCleanData <- function(lsData){
   dtTemp <- capOutlierCorrection(dtTemp)
   dtRain <- capOutlierCorrection(dtRain)
   
-  # aggregate level and flow data
+  # aggregate level and flow data, since rain and temp data is only hourly
   dtLevel <- capAggregateHourly(dtLevel)
   dtFlow <- capAggregateHourly(dtFlow)
   
@@ -62,22 +62,3 @@ capAggregateHourly <- function(dt){
   return(dt)
 }
 
-# function to fix missing data
-#
-# dt: data.table containing temp or rain data
-#
-capFixMissingData <- function(dt){
-  kpi <- dt[1, KPI]
-  max <- as.Date(max(dt[, TIMESTAMP]))
-  min <- as.Date(min(dt[, TIMESTAMP]))
-  dt <- dt[as.Date(TIMESTAMP) != max & as.Date(TIMESTAMP) != min]
-  
-  if(kpi == "RAIN"){
-    colNames <- colnames(dt)[colSums(is.na(dt)) > 0]
-    for(curName in colNames){
-      dt[, curName := na.locf(eval(curName))]  ### not working
-    }
-  }
-    
-  
-}
