@@ -8,3 +8,7 @@ had an alltime low in 2018, and the data history is so short, predictions are
 rather poorly.
 
 The data was provided by Capgemini for a workshop and is free to use.
+
+This project is not yet finished and therefore does not produce any 
+outcome so far. So far it demonstrates the preparation of the data to feed the 
+models.
