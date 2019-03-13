@@ -52,8 +52,8 @@ capOutlierCorrection <- function(dt){
 #
 capAggregateHourly <- function(dt){
   aggrVec <- c("STATION", "Date", "Hour")
-  dt[, `:=` (Date = as.Date(TIMESTAMP), Hour = hour(TIMESTAMP), 
-             Min = minute(TIMESTAMP))]
+  dt[, `:=` (Date = as.Date(TIMESTAMP), Hour = lubridate::hour(TIMESTAMP), 
+             Min = lubridate::minute(TIMESTAMP))]
   dt[, meanVALUE := mean(VALUE), by = aggrVec]
   dt <- dt[Min == 0]
   dt[, `:=` (VALUE = meanVALUE, Date = NULL, Hour = NULL, Min = NULL,
