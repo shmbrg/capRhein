@@ -6,6 +6,8 @@
 # which are not pairwise highly correlated
 #
 capEliminateHighCorr <- function(dt){
+  capLog("Eliminate highly correlated predictors.")
+  
   orgNames <- names(dt)
   orgNames <- orgNames[!grepl("h", orgNames)]
   l <- length(orgNames)

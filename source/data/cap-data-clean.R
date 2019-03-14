@@ -3,6 +3,8 @@
 # lsData: list of all four datasets; datasets being data.table
 #
 capCleanData <- function(lsData){
+  capLog("Clean data.")
+  
   dtLevel <- lsData$level
   dtFlow <- lsData$flow
   dtTemp <- lsData$temp

@@ -3,16 +3,17 @@
 
 # load libraries
 library(data.table)           # basic data structure
-#library(GLDEX)
 library(lubridate)            # for hour, minute
 library(zoo)                  # for na.locf
-#library(xts)
 library(caret)                # for findCorrelation
-#library(corrplot)            # cor plot; not needed in system
 library(h2o)                  # for ML algorithms
+library(timetk)               # for augmented time series signature
+library(lime)                 # for variance importance plots
 
-# load all necessary fils
+# load all necessary files
 source("source/data/cap-data.R")
 source("source/data/cap-data-clean.R")
 source("source/data/cap-data-predictors.R")
 source("source/data/cap-data-corr.R")
+source("source/forecast/cap-forecast.R")
+source("source/log/cap-log.R")

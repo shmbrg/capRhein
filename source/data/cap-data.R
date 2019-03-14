@@ -3,6 +3,8 @@
 # rainfall data is listed every 60 minutes
 #
 capGetData <- function(){
+  capLog("Load data.")
+  
   # load data
   dtLevel <- fread("/Users/seb/Git Projects/capRhein/data/level.csv")
   dtFlow <- fread("/Users/seb/Git Projects/capRhein/data/flow.csv")

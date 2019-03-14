@@ -1,10 +1,14 @@
 
-# function that creates the predictor dataset
+# function that creates the predictor dataset; predictor dataset contains only
+# lagged data of all possible level, flow, temperature and rain data. Lags used:
+# 3h, 6h, 12h, 24h, 48h
 #
 # lsData: list containing data.tables
 # returns: data.table
 #
 capCreatePredictors <- function(lsData){
+  capLog("Create Predictors.")
+  
   lsData <- capCastData(lsData)
   dt <- capMergeData(lsData)
   dt <- capCreateLags(dt)
