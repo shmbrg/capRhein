@@ -15,7 +15,7 @@ capForecast <- function(dep = "DUE_LEVEL"){
   # train different models and choose best one
   lsFc <- capForecastH2o(dt, dep)
   
-  # evaluate variable importance
+  # plot predictions againt original observations
   otpt <- capPlotPrediction(lsFc)
   
 }

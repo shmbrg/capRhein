@@ -8,7 +8,6 @@ library(zoo)                  # for na.locf
 library(caret)                # for findCorrelation
 library(h2o)                  # for ML algorithms
 library(timetk)               # for augmented time series signature
-library(lime)                 # for variance importance plots
 
 # load all necessary files
 source("source/data/cap-data.R")
