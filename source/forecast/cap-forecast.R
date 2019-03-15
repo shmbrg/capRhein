@@ -56,7 +56,7 @@ capForecastH2o <- function(dt, dep = "DUE_LEVEL"){
   # regression (could also use RMSE,..)
   mdls <- h2o.automl(y = dep, x = setdiff(names(h2oTrain), dep), 
                      training_frame = h2oTrain, validation_frame = h2oValidation, 
-                     leaderboard_frame = h2oTest, max_runtime_secs = 300,
+                     leaderboard_frame = h2oTest, max_runtime_secs = 600,
                      exclude_algos = c("DRF", "GBM"), 
                      stopping_metric = "deviance")
   # extract best model and make predictions
