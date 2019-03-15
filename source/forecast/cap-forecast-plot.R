@@ -9,9 +9,8 @@ capPlotPrediction <- function(lsFc){
   dtPred <- as.data.table(lsFc$pred)
   dtOrig <- lsFc$origLevelData
   
-  # not done yet ?!
-  
-  plot(DUE_LEVEL ~ as.Date(TIMESTAMP), dtOrig, type = "l")
+  # tbd
+  return(NULL)
 }
 
 

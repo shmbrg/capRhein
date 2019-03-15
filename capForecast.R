@@ -11,4 +11,4 @@
 source("source/cap-lib.R")
 
 # run forecast system
-capForecast()
+ls <- capForecast()

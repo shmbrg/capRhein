@@ -14,10 +14,8 @@ capForecast <- function(dep = "DUE_LEVEL"){
   
   # train different models and choose best one
   lsFc <- capForecastH2o(dt, dep)
-  
-  # plot predictions againt original observations
-  otpt <- capPlotPrediction(lsFc)
-  
+
+  return(lsFc)
 }
 
 # function that uses the h2o setup to predict with h2o.automl()
@@ -44,7 +42,7 @@ capForecastH2o <- function(dt, dep = "DUE_LEVEL"){
   # initialize H2O JVM
   h2o.init()
   # turn off progress bars
-  h2o.no_progress() 
+  # h2o.no_progress() 
   # split data into train, validation and test set
   h2oTrain <- as.h2o(dtAug[(year == 2017) | (year == 2018 & month < 7)])
   h2oValidation <- as.h2o(dtAug[year == 2018 & month >= 7 & month < 9])
@@ -56,9 +54,9 @@ capForecastH2o <- function(dt, dep = "DUE_LEVEL"){
   # in calculation; after a few testings, GLM turned out to be the best model 
   # anyway; stopping_metric can be altered, deviance is appropriate for 
   # regression (could also use RMSE,..)
-  mdls <- h2o.automl(y = dep, x = setdiff(names(h2oTrain), y), 
+  mdls <- h2o.automl(y = dep, x = setdiff(names(h2oTrain), dep), 
                      training_frame = h2oTrain, validation_frame = h2oValidation, 
-                     leaderboard_frame = h2oTest, max_runtime_secs = 600,
+                     leaderboard_frame = h2oTest, max_runtime_secs = 300,
                      exclude_algos = c("DRF", "GBM"), 
                      stopping_metric = "deviance")
   # extract best model and make predictions
