@@ -14,8 +14,11 @@ capForecast <- function(dep = "DUE_LEVEL"){
   
   # train different models and choose best one
   lsFc <- capForecastH2o(dt, dep)
+  
+  # plot predictions
+  p <- capPlotPrediction(lsFc)
 
-  return(lsFc)
+  return(p)
 }
 
 # function that uses the h2o setup to predict with h2o.automl()
@@ -64,6 +67,6 @@ capForecastH2o <- function(dt, dep = "DUE_LEVEL"){
   capLog(paste0("Best model: ", bestMdl@algorithm))
   h2oPred <- h2o.predict(bestMdl, newdata = h2oTest)
   
-  return(list(pred = h2oPred, 
+  return(list(mdlUsed = bestMdl@algorithm, pred = h2oPred, 
               origLevelData = dtRel[, c("TIMESTAMP", dep), with = F]))
 }
