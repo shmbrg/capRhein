@@ -3,11 +3,10 @@
 # training different ML algorithms and extracting the best model to predict
 # the last two months of the data; 
 #
-# capForecast() will return a list with the predictions, and the original level
-# data of the dependent variable (here level of Duesseldorf)
+# capForecast() will return a plot with the plotted original and predicted data
 
 # source all required functions and libraries
 source("source/cap-lib.R")
 
 # run forecast system
-p <- capForecast()
+capForecast()
